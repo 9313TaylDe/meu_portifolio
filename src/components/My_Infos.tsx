@@ -4,23 +4,22 @@ const My_Infos = () => {
   return (
     <div className="w-full flex md:flex-row p-4 gap-6 items-center sm:flex-col-reverse flex-col-reverse border border-black">
       {/* TEXTO */}
-      <article className="md:w-[65%] h-full flex gap-5 justify-center  items-center">
-        <ul className="flex flex-col h-fit gap-6  text-xl lg:text-4xl lg:gap-8">
+      <article className="md:w-[65%] h-full flex gap-5 justify-center md:flex sm:items-center sm:justify-center items-center flex-wrap sm:border sm:border-black">
+        <div className="flex flex-col gap-2 h-fit sm:justify-center sm:items-center w-full">
+          <h2 className="text-xl tracking-tighter sm:text-lg md:text-4xl lg:text-5xl xl:text-7xlxl lg:text-red-500 md:text-purple-600 ">
+            Olá, eu sou Expedito
+          </h2>
+          <p className="text-lg sm:text-blue-600 sm:text-xl sm:w-[60%] sm:text-center md:text-xs lg:text-3xl lg:tracking-widest ">
+            Sou estudante de Desenvolvimento Full Stack, Mobile Android e
+            Analista de Sistemas.
+          </p>
+        </div>
+        <ul className="flex w-full  h-fit gap-6  text-xl lg:text-4xl md:text-xl md:flex sm:items-center sm:justify-center lg:gap-4 cursor-pointer">
           <li className="pi pi-linkedin"></li>
           <li className="pi pi-github"></li>
           <li className="pi pi-address-book"></li>
           <li className="pi pi-instagram"></li>
         </ul>
-
-        <div className="flex flex-col gap-2 ml-3 h-fit ">
-          <h2 className="text-3xl  sm:text-lg md:text-2xlxl lg:text-7xl lg:text-red-500">
-            Olá! Sou Francisco Expedito
-          </h2>
-          <p className="text-lg sm:text-blue-600 md:text-xs lg:text-3xl lg:tracking-widest ">
-            Sou estudante de Desenvolvimento Full Stack, Mobile Android e
-            Analista de Sistemas.
-          </p>
-        </div>
       </article>
 
       {/* IMAGEM */}
