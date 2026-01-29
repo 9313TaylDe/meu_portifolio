@@ -2,9 +2,9 @@ import foto from "../assets/foto.png";
 
 const My_Infos = () => {
   return (
-    <div className="w-full flex md:flex-row p-4 gap-6 items-center sm:flex-col-reverse flex-col-reverse border border-black">
+    <div className="w-full flex md:flex-row p-4 gap-6 items-center sm:flex-col-reverse flex-col-reverse ">
       {/* TEXTO */}
-      <article className="md:w-[65%] h-full flex gap-5 justify-center md:flex sm:items-center sm:justify-center items-center flex-wrap sm:border sm:border-black">
+      <article className="md:w-[65%] h-full flex gap-5 justify-center md:flex sm:items-center sm:justify-center items-center flex-wrap ">
         <div className="flex flex-col gap-2 h-fit sm:justify-center sm:items-center w-full">
           <h2 className="text-xl tracking-tighter sm:text-lg md:text-4xl lg:text-5xl xl:text-7xlxl lg:text-red-500 md:text-purple-600 ">
             Olá, eu sou Expedito
@@ -23,7 +23,7 @@ const My_Infos = () => {
       </article>
 
       {/* IMAGEM */}
-      <article className="md:w-[35%] flex justify-center">
+      <article className="md:w-[35%] h-full flex justify-center">
         <img
           className="rounded-2xl w-[160px] md:w-[200px] lg:w-[400px]"
           src={foto}

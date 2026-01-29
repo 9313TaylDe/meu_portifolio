@@ -5,24 +5,21 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="flex relative w-full h-[50px] bg-white md:bg-white transition-all">
+    <header className="flex  w-full h-[50px]  bg-white md:bg-white transition-all">
       {/* MENU DESKTOP */}
       <ul className="hidden md:flex w-full gap-5 justify-center items-center">
         {["Home", "Sobre", "Contato", "Projetos"].map((item) => (
-          <li
-            key={item}
-            className="px-4 py-1 text-[14px] rounded-md border border-black cursor-pointer"
-          >
+          <li key={item} className="px-4 py-1 text-[14px]  cursor-pointer">
             {item}
           </li>
         ))}
       </ul>
 
       {/* MENU MOBILE */}
-      <nav className="md:hidden w-full">
+      <nav className="md:hidden w-full h-screen fixed ">
         <button
           onClick={() => setOpen(!open)}
-          className="absolute left-2 top-2 z-50 w-8 h-8 flex items-center justify-center"
+          className="fixed left-3 hover:text-gray-400 text-white opacity-40 top-0 z-50 w-8 h-8 flex items-center justify-center"
         >
           <i
             className={`pi pi-bars absolute text-xl transition-all duration-300 ${
@@ -37,13 +34,19 @@ const Header = () => {
         </button>
 
         <ul
-          className={`flex flex-col bg-purple-700 text-white w-full p-4 gap-3 absolute top-[50px] transition-all duration-300 ${
-            open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"
+          className={`flex flex-col bg-gray-500 cursor-pointer  h-screen text-black w-full p-4 pt-9 gap-3 absolute top-[50px] transition-all duration-300 ${
+            open ? "-translate-y-14 opacity-100 " : "translate-y-4 opacity-0"
           }`}
         >
-          <li>HOME</li>
-          <li>SOBRE</li>
-          <li>CONTATO</li>
+          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm">
+            HOME
+          </li>
+          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm">
+            SOBRE
+          </li>
+          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm">
+            CONTATO
+          </li>
         </ul>
       </nav>
     </header>
