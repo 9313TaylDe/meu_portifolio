@@ -19,15 +19,15 @@ const Header = () => {
       <nav className="md:hidden w-full h-screen fixed ">
         <button
           onClick={() => setOpen(!open)}
-          className="fixed left-3 hover:text-gray-400 text-white opacity-40 top-0 z-50 w-8 h-8 flex items-center justify-center"
+          className="fixed left-3  top-0 z-50 w-8 h-8 flex items-center justify-center"
         >
           <i
-            className={`pi pi-bars absolute text-xl transition-all duration-300 ${
+            className={`pi pi-bars text-black absolute text-xl transition-all duration-300 ${
               open ? "opacity-0 rotate-90 scale-75" : "opacity-100"
             }`}
           />
           <i
-            className={`pi pi-times absolute text-xl transition-all duration-300 ${
+            className={`pi pi-times text-black absolute text-xl transition-all duration-300 ${
               open ? "opacity-100" : "opacity-0 -rotate-90 scale-75"
             }`}
           />
