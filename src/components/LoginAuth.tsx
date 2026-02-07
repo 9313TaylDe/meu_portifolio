@@ -22,8 +22,8 @@ const LoginAuth = ({ children }) => {
         setemail(saved.email);
         setnome(saved.nome);
       }
-      setloading(false);
     }
+    setloading(false);
   }, []);
 
   console.log(email, senha, nome);
@@ -35,7 +35,9 @@ const LoginAuth = ({ children }) => {
         return;
       }
 
-      const response = await fetch("http://127.0.0.1:5000/login", {
+      const API_URL = import.meta.env.VITE_API_URL;
+
+      const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, senha }),
@@ -72,7 +74,9 @@ const LoginAuth = ({ children }) => {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/new", {
+      const API_URL = import.meta.env.VITE_API_URL;
+
+      const response = await fetch(`${API_URL}/new`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
