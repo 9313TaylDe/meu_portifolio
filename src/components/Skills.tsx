@@ -12,19 +12,15 @@ export const frontendSkills = [
 
 export const backendSkills = [
   { name: "Node.js", level: 70 },
-  { name: "Express", level: 65 },
-  { name: "REST APIs", level: 75 },
-  { name: "JWT / Auth", level: 60 },
-  { name: "PostgreSQL", level: 70 },
-  { name: "MongoDB", level: 65 },
+  { name: "REST APIs", level: 23 },
+  { name: "JWT / Auth", level: 20 },
 ];
 
 const SkillsAccordion = ({ title, skills }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="w-full max-w-3xl mx-auto bg-white rounded-xl shadow-lg">
-      {/* HEADER */}
+    <section className="w-[65%] mx-auto rounded-sm ">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-center p-4 font-semibold"
@@ -47,7 +43,7 @@ const SkillsAccordion = ({ title, skills }) => {
                 <span>{skill.level}%</span>
               </div>
 
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-full h-2 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-black transition-all duration-700"
                   style={{ width: `${skill.level}%` }}

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "primeicons/primeicons.css";
+import { useAuth } from "./LoginAuth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const { Logout } = useContext(useAuth);
 
   return (
     <header className="flex  w-full h-[50px]  bg-white md:bg-white transition-all">
@@ -46,6 +48,12 @@ const Header = () => {
           </li>
           <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm">
             CONTATO
+          </li>
+          <li
+            className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm"
+            onClick={() => Logout()}
+          >
+            Loggout
           </li>
         </ul>
       </nav>
