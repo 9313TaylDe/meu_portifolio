@@ -35,13 +35,15 @@ const LoginAuth = ({ children }) => {
         return;
       }
 
-      const API_URL = import.meta.env.VITE_API_URL;
-
-      const response = await fetch(`${API_URL}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha }),
-      });
+      const response = await fetch(
+        "https://backend-1-jdsc.onrender.com/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, senha }),
+        }
+      );
+      console.log(response);
 
       const dados = await response.json();
 
@@ -74,7 +76,8 @@ const LoginAuth = ({ children }) => {
     }
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL;
+      const API_URL =
+        import.meta.env.VITE_API_URL || "https://backend-1-jdsc.onrender.com";
 
       const response = await fetch(`${API_URL}/new`, {
         method: "POST",
