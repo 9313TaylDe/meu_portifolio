@@ -23,11 +23,11 @@ def Login():
     
     for user in user_adm:
         if user["email"] == email and user["senha"] == senha:
-            return jsonify({"success":True, "Nome":user["nome"],"Email":user["email"]})
+            return jsonify({"success":True, "nome":user["nome"],"email":user["email"]})
 
     for user in users:
         if user["email"] == email and user["senha"] == senha:
-            return jsonify({"success":True, "Nome":user["nome"],"Email":user["email"]})
+            return jsonify({"success":True, "nome":user["nome"],"email":user["email"]})
     return jsonify({"success":False, "message":"E-mail ou senha inválidos"})
         
 @app.route("/new", methods=["POST"])
@@ -41,7 +41,7 @@ def New():
         
     }
     users.append(nova_conta)
-    return jsonify({"success":True, "Nome":nome["nome"],"Email":email["email"]})
+    return jsonify({"success":True, "nome":nome["nome"],"email":email["email"]})
 
 if __name__ == "__main__":
     app.run(debug=True)
