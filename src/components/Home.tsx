@@ -6,19 +6,19 @@ import { frontendSkills, backendSkills } from "../components/Skills";
 
 const Home = () => {
   return (
-    <div className="w-full  flex flex-col items-center gap-6 relative">
+    <div className="w-full  flex flex-col items-center sm:space-y-20 gap-6 relative p-1">
       <Header />
 
-      <section className="w-full md:w-[70%] flex justify-center shadow-[0_1px_6px_0] rounded-sm shadow-slate-400">
+      <section className="w-full md:w-[70%] flex justify-center shadow-[0_1px_6px_0] rounded-sm shadow-slate-400 ">
         <My_Infos />
       </section>
-      <section className="p-4 w-[70%] shadow-sm shadow-slate-400 flex flex-col items-center justify-center rounded-sm">
+      <section className="p-4 w-[70%] z-20 sm:w-[70%] shadow-[0_1px_6px_0] shadow-slate-400 flex flex-col items-center justify-center rounded-sm gap-2">
         <h2 className="text-[30px] font-bold">Habilidades</h2>
         <SkillsAccordion title="Frontend & UI/UX" skills={frontendSkills} />
         <SkillsAccordion title="Backend" skills={backendSkills} />
       </section>
       <section className="w-full md:w-[70%] flex flex-col shadow-sm shadow-gray-400 p-4 rounded-sm">
-        <h2 className="w-full text-center font-bold mb-4">Formação</h2>
+        <h2 className="w-full text-center font-bold mb-8">Formação</h2>
 
         <div className="flex flex-col gap-4">
           {/* Item */}

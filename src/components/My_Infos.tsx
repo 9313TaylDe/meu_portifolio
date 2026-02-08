@@ -9,7 +9,7 @@ const My_Infos = () => {
           <h2 className="text-xl tracking-tighter sm:text-lg md:text-4xl lg:text-5xl xl:text-7xlxl lg:text-red-500 md:text-purple-600 ">
             Olá, eu sou Expedito
           </h2>
-          <p className="text-lg sm:text-blue-600 sm:text-xl sm:w-[60%] sm:text-center md:text-xs lg:text-3xl lg:tracking-widest ">
+          <p className="text-lg sm:text-gray-600 sm:text-xl sm:w-[60%] sm:text-center md:text-xs lg:text-3xl lg:tracking-widest ">
             Sou estudante de Desenvolvimento Full Stack, Mobile Android e
             Analista de Sistemas.
           </p>

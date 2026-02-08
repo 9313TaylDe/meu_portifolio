@@ -20,10 +20,10 @@ const SkillsAccordion = ({ title, skills }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="w-[65%] mx-auto rounded-sm ">
+    <section className="w-[75%] sm:w-[69%] mx-auto rounded-sm ">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center p-4 font-semibold"
+        className="w-full text-[13px] sm:text-[26px] tracking-wide flex justify-between items-center p-2 font-semibold"
       >
         {title}
         <i
@@ -37,7 +37,7 @@ const SkillsAccordion = ({ title, skills }) => {
       {open && (
         <div className="px-4 pb-4 space-y-4">
           {skills.map((skill) => (
-            <div key={skill.name} className="space-y-1">
+            <div key={skill.name} className="space-y-1 ">
               <div className="flex justify-between text-sm font-medium">
                 <span>{skill.name}</span>
                 <span>{skill.level}%</span>
@@ -45,7 +45,7 @@ const SkillsAccordion = ({ title, skills }) => {
 
               <div className="w-full h-2 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-black transition-all duration-700"
+                  className="h-full bg-orange-600 transition-all duration-700"
                   style={{ width: `${skill.level}%` }}
                 />
               </div>

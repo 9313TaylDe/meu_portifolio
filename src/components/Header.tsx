@@ -7,18 +7,21 @@ const Header = () => {
   const { Logout } = useContext(useAuth);
 
   return (
-    <header className="flex  w-full h-[50px]  bg-white md:bg-white transition-all">
+    <header className="flex w-full h-[50px]  bg-white md:bg-white transition-all">
       {/* MENU DESKTOP */}
-      <ul className="hidden md:flex w-full gap-5 justify-center items-center">
+      <ul className="hidden md:flex fixed top-0 bg-white w-full h-[15vh] z-50 gap-5 justify-center items-center">
         {["Home", "Sobre", "Contato", "Projetos"].map((item) => (
-          <li key={item} className="px-4 py-1 text-[14px]  cursor-pointer">
+          <li
+            key={item}
+            className="px-4 py-1 text-[14px] sm:text-[20px]  cursor-pointer"
+          >
             {item}
           </li>
         ))}
       </ul>
 
       {/* MENU MOBILE */}
-      <nav className="md:hidden w-full h-screen fixed ">
+      <nav className={`md:hidden inset-0  fixed ${open && "z-50"}`}>
         <button
           onClick={() => setOpen(!open)}
           className="fixed left-3  top-0 z-50 w-8 h-8 flex items-center justify-center"
@@ -40,20 +43,27 @@ const Header = () => {
             open ? "-translate-y-14 opacity-100 " : "translate-y-4 opacity-0"
           }`}
         >
-          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm">
-            HOME
-          </li>
-          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm">
-            SOBRE
-          </li>
-          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm">
-            CONTATO
-          </li>
           <li
-            className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm"
+            className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm flex items-center gap-2"
             onClick={() => Logout()}
           >
-            Loggout
+            <i className="pi pi-sign-out"></i>
+            SAIR
+          </li>
+
+          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm flex items-center gap-2">
+            <i className="pi pi-home"></i>
+            HOME
+          </li>
+
+          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm flex items-center gap-2">
+            <i className="pi pi-info-circle"></i>
+            SOBRE
+          </li>
+
+          <li className="hover:bg-white opacity-40 text-black font-bold p-0.5 rounded-sm flex items-center gap-2">
+            <i className="pi pi-phone"></i>
+            CONTATO
           </li>
         </ul>
       </nav>
