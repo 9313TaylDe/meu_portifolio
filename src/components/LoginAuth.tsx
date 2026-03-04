@@ -1,17 +1,23 @@
 import { createContext, useEffect, useState } from "react";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 export const useAuth = createContext();
 
 const LoginAuth = ({ children }) => {
   const [email, setemail] = useState("");
   const [senha, setsenha] = useState("");
+
   const [nome, setnome] = useState("");
+
   const [emailcad, setemailcad] = useState("");
   const [senhacad, setsenhacad] = useState("");
   const [nomecad, setnomecad] = useState("");
+
   const [logado, setlogado] = useState(false);
   const [loading, setloading] = useState(true);
+
   const navegar = useNavigate();
+
   useEffect(() => {
     const isAuth = localStorage.getItem("auth") === "true";
 
@@ -23,11 +29,11 @@ const LoginAuth = ({ children }) => {
         setnome(saved.nome);
       }
     }
+
     setloading(false);
   }, []);
 
-  console.log(email, senha, nome);
-
+  // 🔐 LOGIN
   const Login = async () => {
     try {
       if (!email || !senha) {
@@ -40,35 +46,39 @@ const LoginAuth = ({ children }) => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, senha }),
+          body: JSON.stringify({
+            email,
+            password: senha, // 🔥 CORREÇÃO AQUI
+          }),
         }
       );
-      console.log(response);
 
       const dados = await response.json();
 
-      if (dados.success) {
-        setlogado(true);
-
-        localStorage.setItem("auth", "true");
-        localStorage.setItem(
-          "saved",
-          JSON.stringify({
-            email: dados.email,
-            nome: dados.nome,
-          })
-        );
-
-        alert(`Bem vindo Sr ${dados.nome}`);
-        navegar("/home");
-      } else {
-        alert("Dados incorretos");
+      if (!response.ok) {
+        alert(dados.error || "Dados incorretos");
+        return;
       }
+
+      setlogado(true);
+
+      localStorage.setItem("auth", "true");
+      localStorage.setItem(
+        "saved",
+        JSON.stringify({
+          email: dados.user.email,
+          nome: dados.user.nome,
+        })
+      );
+
+      alert(`Bem vindo ${dados.user.nome}`);
+      navegar("/home");
     } catch (err) {
       alert("Erro ao conectar com o servidor");
     }
   };
 
+  // 📝 CADASTRO
   const newAccountt = async () => {
     if (!nomecad || !emailcad || !senhacad) {
       alert("Preencha todos os campos");
@@ -76,48 +86,52 @@ const LoginAuth = ({ children }) => {
     }
 
     try {
-      const API_URL =
-        import.meta.env.VITE_API_URL || "https://backend-1-jdsc.onrender.com";
+      const response = await fetch(
+        "https://backend-1-jdsc.onrender.com/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nome: nomecad,
+            email: emailcad,
+            password: senhacad, // 🔥 CORREÇÃO
+          }),
+        }
+      );
 
-      const response = await fetch(`${API_URL}/new`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nome: nomecad,
-          email: emailcad,
-          senha: senhacad,
-        }),
-      });
+      const data = await response.json();
 
-      if (response.ok) {
-        alert("Cadastrado com sucesso");
-
-        // limpa campos de cadastro
-        setnomecad("");
-        setemailcad("");
-        setsenhacad("");
-
-        return true; // 🔥 ESSENCIAL
-      } else {
-        const res = await response.json();
-        alert(res.message || "Erro ao cadastrar");
+      if (!response.ok) {
+        alert(data.error || "Erro ao cadastrar");
         return false;
       }
+
+      alert("Cadastrado com sucesso");
+
+      setnomecad("");
+      setemailcad("");
+      setsenhacad("");
+
+      return true;
     } catch (err) {
       alert("Erro ao conectar com o servidor");
       return false;
     }
   };
 
+  // 🚪 LOGOUT
   const Logout = () => {
     localStorage.removeItem("auth");
+    localStorage.removeItem("saved");
+
     setlogado(false);
-    alert("Deslogado com sucesso");
     setemail("");
     setnome("");
     setsenha("");
+
     navegar("/login");
   };
+
   return (
     <useAuth.Provider
       value={{
@@ -137,9 +151,7 @@ const LoginAuth = ({ children }) => {
         nomecad,
         setnomecad,
         logado,
-        setlogado,
         loading,
-        setloading,
       }}
     >
       {children}

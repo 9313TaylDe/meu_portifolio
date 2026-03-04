@@ -6,7 +6,7 @@ import { frontendSkills, backendSkills } from "../components/Skills";
 
 const Home = () => {
   return (
-    <div className="w-full  flex flex-col items-center sm:space-y-20 gap-6 relative p-1">
+    <div className="w-full  flex flex-col items-center sm:space-y-20 sm:columns-1 gap-6 relative p-1">
       <Header />
 
       <section className="w-full md:w-[70%] flex justify-center shadow-[0_1px_6px_0] rounded-sm shadow-slate-400 ">
